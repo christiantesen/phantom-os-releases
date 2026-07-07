@@ -1,75 +1,61 @@
-# Phantom OS
+# Phantom OS 
 
-**Phantom OS** is an advanced memory injection and macro simulation tool designed specifically for MU Online. Built on Python with a modern CustomTkinter interface, it bypasses standard user-mode API hooking and implements low-level kernel inputs to achieve complete stealth (Anti-Cheat evasion).
+Bienvenido a **Phantom OS**, una herramienta de utilidad avanzada para MU Online enfocada en rendimiento, estabilidad y capacidad de evasión (stealth). Este manual explica paso a paso cómo descargar, inyectar y configurar tu herramienta.
 
-[**👉 Read the User Guide (How to Use)**](GUIDE.md)
+## 📥 Descarga e Instalación
 
-## Technical Architecture
+1. Ve a la pestaña de **[Releases](../../releases)** a la derecha de esta página.
+2. Descarga el archivo **`Phantom OS.exe`** de la versión más reciente.
+3. No requiere instalación, simplemente guárdalo en una carpeta de tu preferencia.
 
-The core of Phantom OS operates outside the traditional scope of standard macro recorders by reading and manipulating the target process's memory space directly, and interacting with the Windows subsystem via raw `ctypes` bindings.
+---
 
-### Core Modules
+## 1. Ejecución e Inyección
 
-* **`zoom_engine.py` (Memory Scanner)**:
-  * Emplea `pymem` para acceder a la memoria virtual del proceso (`main.exe`).
-  * Utiliza un escaneo de floats secuencial (Pattern matching numérico) sobre los offsets de cámara conocidos (`39.0`, `35.0`).
-  * Contiene un hilo cíclico (`_keep_loop`) protegido con *backoff-sleeps* (5.0s en desconexión) para evitar memory leaks o *CPU throttling* al perder las direcciones de los punteros durante las transiciones de pantalla (Warps).
-* **`input_simulator.py` (Hardware Level Input)**:
-  * Descarta el uso de `PostMessage` o `SendMessage` ya que son fácilmente interceptados por Anti-Cheats como LiveGuard.
-  * Implementa `SendInput` (vía `user32.dll`), enviando estructuras nativas de Windows a la cola de hardware del sistema operativo, simulando el presionado físico del switch del teclado.
-* **`macro_engine.py` (Threading & Polling)**:
-  * Divide su carga de procesamiento en múltiples Daemon Threads.
-  * **Auto-Potions:** Registra global hooks pasivos (`keyboard.add_hotkey`) que ceden el hilo principal al procesador (`0%` CPU footprint).
-  * **Dynamic Combos:** Implementa un bucle *State-Machine* de latencia ultra-baja (30ms rest cycles) que evalúa interrupciones en tiempo real de la tecla `L-CTRL`.
-* **`nt_api.py` (Kernel Manipulation & Process Enumeration)**:
-  * Se apoya en enumeración nativa (`EnumWindows`, `GetWindowThreadProcessId`) garantizando la obtención de *Window Handles* (`HWND`) limpios sin detonar alarmas de inyección en librerías de terceros.
-* **`ui/app.py` (GUI)**:
-  * Arquitectura MVC que delega el estado y el bucle de UI principal a `CustomTkinter`. Corre en aislamiento total respecto a los motores lógicos.
+1. **Abre el Programa:** Haz doble clic en `Phantom OS.exe`.
+2. **Concede Permisos:** Windows te mostrará una ventana de confirmación (UAC) pidiendo permisos de Administrador. Debes hacer clic en **"Sí"**. *Si no le das permisos, el programa no podrá leer la memoria del juego.*
+3. **Selecciona tu Cliente:** En la pantalla principal, verás una lista de procesos activos. Ubica el que diga `main.exe` o el nombre de tu cliente de MU, selecciónalo haciendo clic en él, y presiona el botón **INYECTAR**.
+   > En el recuadro negro de la derecha (consola de LOGS) verás el mensaje: *"Enganchando a PID..."*
 
-## Project Structure
+---
 
-```
-phantom-os/
-├── src/
-│   ├── config.py           # Global settings & process definitions
-│   ├── main.py             # UAC Escalation and entry point
-│   ├── ui/                 # CustomTkinter Views & Controllers
-│   │   └── app.py
-│   └── core/               # Engine Logic (Memory & Hooking)
-│       ├── input_simulator.py 
-│       ├── macro_engine.py    
-│       ├── nt_api.py          
-│       ├── speed_engine.py    
-│       ├── range_engine.py
-│       └── zoom_engine.py     
-├── README.md               # Technical Documentation
-├── GUIDE.md                # End-User Manual
-├── LICENSE                 # MIT License
-└── build.bat               # PyInstaller automated build script
-```
+## 2. Herramientas y Módulos
 
-## Development Environment Setup
+### 👁️ Zoom Engine (Cámara Extendida)
+Te permite alejar la cámara del juego a distancias masivas para tener control total de tu entorno.
 
-1. **Prerequisites:** Python 3.10+
-2. **Install Dependencies:**
-   ```bash
-   pip install customtkinter keyboard psutil pymem pywin32 pyinstaller
-   ```
-3. **Execution:**
-   ```bash
-   python src/main.py
-   ```
-   > *Note: Windows User Account Control (UAC) elevation is heavily strictly enforced for `pymem` OpenProcess handles. `main.py` auto-requests elevation.*
+* **Aplicar Zoom:** Mueve el deslizador (Slider) entre los valores `1` (Normal) y `100` (Súper Lejos). Haz clic en **APLICAR**.
+* **El botón mágico "MANTENER":** ¡Muy Recomendado! Cuando cruzas puertas (Warps), cambias de mapa, o tu personaje muere, el servidor de MU fuerza tu cámara a volver a la normalidad. Si presionas **MANTENER**, Phantom OS re-aplicará automáticamente tu Zoom configurado cada segundo en segundo plano sin que tengas que hacer nada.
 
-## Compiling for Distribution
+### 🧪 Motor Auto-Potas (Curación Automática)
+Automatiza la presión de teclas (generalmente Q, W, E) para curarte a velocidades sobrehumanas durante los combates (PVP/PVE).
 
-To generate a standalone `.exe` without requiring end-users to have Python installed, simply run the included batch script:
+1. **Configurar Teclas:** Escribe las teclas que quieres usar separadas por coma. Ej: `Q, W, E`.
+2. **Configurar Retraso (Delay):** Es la velocidad de curación. `0.20` equivale a presionar las teclas cada 200 milisegundos.
+3. **Atajo de Encendido:** Por defecto es **F4**. Puedes cambiarlo por la tecla que te resulte más cómoda.
+4. **Guardar:** ¡IMPORTANTE! Dale al botón **GUARDAR CONFIGURACIÓN**.
+5. **Uso en el juego:** Presiona tu tecla de atajo (`F4`). En la ventana de Logs leerás *"Auto-Potas ACTIVADO"*. Presiónalo de nuevo para apagarlo.
 
-```bash
-./build.bat
-```
-This generates a single `Phantom OS.exe` payload inside the `dist/` directory using `--onefile` and integrates standard assets.
+### ⚔️ Combos Cíclicos Dinámicos
+Diseñado para clases como el Blade Knight (BK) que requieren una secuencia perfecta de habilidades.
 
-## License
+1. **Seleccionar Perfil:** Elige un combo de la lista desplegable (Ej: `BK (1-2-3)`).
+2. **Velocidad (Delay Base):** Ajusta qué tan rápido saltará de una habilidad a otra.
+3. **Guardar:** Haz clic en **GUARDAR COMBO**.
+4. **Uso en el juego:** Este sistema es **Dinámico**. No hay botón de encendido. El combo se dispara **únicamente mientras mantengas presionada la tecla L-CTRL (Control Izquierdo)** de tu teclado. Esto te permite lanzar un combo y, al soltar la tecla, volver al control manual instantáneamente para reposicionarte.
 
-This project is licensed under the [MIT License](LICENSE).
+---
+
+## 3. Seguridad Adicional (Stealth)
+
+### 👻 Modo Camuflaje (Ghost Mode)
+Arriba a la derecha encontrarás un ícono de Fantasma. Esto sirve para ocultar a Phantom OS de las capturas de pantalla o sistemas de stream.
+* **Activar:** Haz clic en el botón. Selecciona cualquier otro programa que tengas abierto (por ejemplo, *Calculadora* o *Google Chrome*). Phantom OS copiará su ícono y su nombre en la barra de tareas de Windows.
+* **¿Por qué usarlo?:** Evita que espectadores en un stream (como OBS) o administradores del juego vean que tienes la herramienta abierta.
+
+---
+
+### Solución de Problemas Comunes
+
+* **"Las potas no se toman" / "El combo no dispara"**: Asegúrate de que iniciaste el ejecutable dando "Sí" a los permisos de Administrador, y de que la ventana del juego de MU Online está **seleccionada y activa** (en primer plano) en Windows.
+* **"El Zoom no funciona"**: Asegúrate de haber inyectado el programa *después* de que tu personaje ya haya aparecido dentro del mapa del juego, no durante la pantalla de carga.
