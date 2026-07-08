@@ -32,7 +32,7 @@ Automatiza la presión de teclas (generalmente Q, W, E) para curarte a velocidad
 
 1. **Configurar Teclas:** Escribe las teclas que quieres usar separadas por coma. Ej: `Q, W, E`.
 2. **Configurar Retraso (Delay):** Es la velocidad de curación. `0.20` equivale a presionar las teclas cada 200 milisegundos.
-3. **Atajo de Encendido:** Por defecto es **F4**. Puedes cambiarlo por la tecla que te resulte más cómoda.
+3. **Tecla ON/OFF:** Por defecto es **F4**. Puedes cambiarlo por la tecla que te resulte más cómoda para prender o apagar el spammer.
 4. **Guardar:** ¡IMPORTANTE! Dale al botón **GUARDAR CONFIGURACIÓN**.
 5. **Uso en el juego:** Presiona tu tecla de atajo (`F4`). En la ventana de Logs leerás *"Auto-Potas ACTIVADO"*. Presiónalo de nuevo para apagarlo.
 
@@ -40,9 +40,10 @@ Automatiza la presión de teclas (generalmente Q, W, E) para curarte a velocidad
 Diseñado para clases como el Blade Knight (BK) que requieren una secuencia perfecta de habilidades.
 
 1. **Seleccionar Perfil:** Elige un combo de la lista desplegable (Ej: `BK (1-2-3)`).
-2. **Velocidad (Delay Base):** Ajusta qué tan rápido saltará de una habilidad a otra.
-3. **Guardar:** Haz clic en **GUARDAR COMBO**.
-4. **Uso en el juego:** Este sistema es **Dinámico**. No hay botón de encendido. El combo se dispara **únicamente mientras mantengas presionada la tecla L-CTRL (Control Izquierdo)** de tu teclado. Esto te permite lanzar un combo y, al soltar la tecla, volver al control manual instantáneamente para reposicionarte.
+2. **Editar Teclas (Opcional):** Puedes hacer clic en cualquiera de las teclas del combo (ej: borrar el `4` y poner un `3`) para alterar la secuencia de habilidades.
+3. **Velocidad (Delay Base):** Ajusta qué tan rápido saltará de una habilidad a otra.
+4. **Guardar:** Haz clic en **GUARDAR COMBO**.
+5. **Uso en el juego:** Enciende el Switch **ON/OFF** de la interfaz. Ahora, el combo se disparará **únicamente mientras mantengas presionada la tecla L-CTRL (Control Izquierdo)** de tu teclado. Esto te permite lanzar un combo y, al soltar la tecla, volver al control manual instantáneamente para reposicionarte. Si no vas a usar el combo un rato, puedes simplemente apagar el switch.
 
 ---
 
