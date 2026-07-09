@@ -45,6 +45,14 @@ Diseñado para clases como el Blade Knight (BK) que requieren una secuencia perf
 4. **Guardar:** Haz clic en **GUARDAR COMBO**.
 5. **Uso en el juego:** Enciende el Switch **ON/OFF** de la interfaz. Ahora, el combo se disparará **únicamente mientras mantengas presionada la tecla L-CTRL (Control Izquierdo)** de tu teclado. Esto te permite lanzar un combo y, al soltar la tecla, volver al control manual instantáneamente para reposicionarte. Si no vas a usar el combo un rato, puedes simplemente apagar el switch.
 
+### 🎯 Rango Infinito (Range Hack)
+Permite lanzar habilidades contra cualquier enemigo sin importar la distancia. Tu personaje podrá golpear desde el otro lado del mapa.
+
+1. **Activar:** Simplemente enciende el Switch **ON/OFF** que aparece en la sección "Rango Infinito".
+2. **Desactivar:** Apaga el Switch cuando quieras volver al rango normal. Los bytes originales del cliente se restaurarán automáticamente.
+
+> ⚠️ **Advertencia:** Este módulo inyecta código de máquina directamente en el proceso del juego. Es más agresivo que el Zoom o los Macros, por lo que algunos servidores con Anti-Cheat podrían detectarlo. Úsalo bajo tu propio riesgo.
+
 ---
 
 ## 3. Seguridad Adicional (Stealth)
