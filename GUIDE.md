@@ -10,14 +10,14 @@ Phantom OS utiliza un sistema de **Hardware ID (HWID)**. Esto significa que el p
 
 ```mermaid
 graph TD
-    A([Abrir Phantom-OS.exe]) --> B{¿Es la primera vez?}
-    B -- Sí --> C[Pantalla de Bloqueo HWID]
-    B -- No --> H([Pantalla Principal del Cheat])
+    A(["Abrir Phantom-OS.exe"]) --> B{"¿Es la primera vez?"}
+    B -- Sí --> C["Pantalla de Bloqueo HWID"]
+    B -- No --> H(["Pantalla Principal del Cheat"])
     
-    C --> D[Copiar código HWID de tu pantalla]
-    D --> E(Enviar HWID al Administrador)
-    E --> F[Recibir tu Llave de Activación Única]
-    F --> G[Pegar Llave y Activar]
+    C --> D["Copiar código HWID de tu pantalla"]
+    D --> E("Enviar HWID al Administrador")
+    E --> F["Recibir tu Llave de Activación Única"]
+    F --> G["Pegar Llave y Activar"]
     G --> H
 ```
 
@@ -31,10 +31,10 @@ Para que Phantom OS pueda operar, necesita "engancharse" a la memoria de MU Onli
 
 ```mermaid
 flowchart LR
-    1[1. Entrar a MU Online] --> 2[2. Logear personaje en el mapa]
-    2 --> 3[3. Abrir Phantom OS como Administrador]
-    3 --> 4[4. Seleccionar main.exe en la lista]
-    4 --> 5([5. Clic en INYECTAR])
+    1["1. Entrar a MU Online"] --> 2["2. Logear personaje en el mapa"]
+    2 --> 3["3. Abrir Phantom OS como Administrador"]
+    3 --> 4["4. Seleccionar main.exe en la lista"]
+    4 --> 5(["5. Clic en INYECTAR"])
 ```
 
 * **No inyectes durante la pantalla de carga.** Siempre espera a estar dentro del mapa y ver a tu personaje.
@@ -97,25 +97,16 @@ stateDiagram-v2
 
 ```mermaid
 graph TD
-    A[Clic en icono Fantasma (Arriba Der.)] --> B[Selecciona un proceso tapadera]
-    B -->|Ej: Calculadora.exe| C(Phantom OS extrae el ícono de la calculadora)
-    C --> D(Phantom OS adopta el nombre 'Calculadora')
-    D --> E(La ventana de Phantom desaparece de la vista)
-    E --> F[Phantom OS se minimiza a la Bandeja de Sistema]
+    A["Clic en icono Fantasma (Arriba Der.)"] --> B["Selecciona un proceso tapadera"]
+    B -->|"Ej: Calculadora.exe"| C("Phantom OS extrae el ícono de la calculadora")
+    C --> D("Phantom OS adopta el nombre 'Calculadora'")
+    D --> E("La ventana de Phantom desaparece de la vista")
+    E --> F["Phantom OS se minimiza a la Bandeja de Sistema"]
     
-    F --> G{¿Alguien abre el Administrador de Tareas?}
-    G -- Sí --> H[¡Indetectable! Solo verán una calculadora corriendo.]
+    F --> G{"¿Alguien abre el Administrador de Tareas?"}
+    G -- Sí --> H["¡Indetectable! Solo verán una calculadora corriendo."]
 ```
 
 ### ¿Cómo recuperar la ventana de Phantom OS?
 Simplemente ve a la esquina inferior derecha de tu pantalla (junto al reloj de Windows), haz clic en la flechita para ver los "Iconos Ocultos", busca el icono de tu programa tapadera (la Calculadora) y hazle **Doble Clic**. La ventana de Phantom OS volverá a aparecer.
 
----
-
-## 6. Módulo Extremo: Rango Infinito 🎯
-
-Este módulo modifica las validaciones de distancia que hace tu cliente antes de atacar.
-> **Advertencia de Seguridad:** Este es el único módulo invasivo. Inyecta código ensamblador (*Code Caves*) en el cliente. Úsalo bajo tu propio riesgo, ya que atacar monstruos desde la otra esquina del mapa es evidente para administradores humanos o Anti-Cheats de análisis heurístico.
-
-* **On:** El límite de distancia para las skills mágicas se remueve.
-* **Off:** Se restauran los bytes originales nativos del juego. (Úsalo cuando sientas que te están observando).
