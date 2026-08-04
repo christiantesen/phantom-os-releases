@@ -2,6 +2,8 @@
 
 Herramienta de utilidad avanzada para MU Online enfocada en **rendimiento, estabilidad y capacidad Stealth**. Diseñada para darte una ventaja táctica absoluta sin comprometer la seguridad de tu cuenta.
 
+> 📚 **[👉 HAZ CLIC AQUÍ PARA LEER LA GUÍA VISUAL Y DETALLADA DE USUARIO (Recomendado)](GUIDE.md)**
+
 ---
 
 ## 📥 1. Descarga e Instalación
