@@ -15,10 +15,3 @@ Herramienta de utilidad avanzada para MU Online enfocada en **rendimiento, estab
 3. Selecciona tu cliente de MU (`main.exe`) en la lista y presiona **Inyectar**.
 
 [👉 Haz clic aquí para leer la Guía de Usuario Completa](https://github.com/christiantesen/phantom-os-releases/blob/main/GUIDE.md)
-
----
-
-### Solución de Problemas Comunes
-
-* **"Las potas no se toman" / "El combo no dispara"**: Asegúrate de que iniciaste el ejecutable dando "Sí" a los permisos de Administrador, y de que la ventana del juego de MU Online está **seleccionada y activa** (en primer plano) en Windows.
-* **"El Zoom no funciona"**: Asegúrate de haber inyectado el programa *después* de que tu personaje ya haya aparecido dentro del mapa del juego, no durante la pantalla de carga.
